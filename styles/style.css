@@ -1,0 +1,71 @@
+:root{
+    --spacer: 1rem;
+}
+button{
+    width: 35px;
+    height: 35px;
+    text-align: center;
+}
+.szerszy{
+    width: 100px;
+    height: 35px;
+}
+.sectors{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.sectorA{
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    background-color: red;
+    border: 2px solid black;
+}
+
+.sectorB{
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: red;
+    border: 2px solid black;
+}
+
+.sectorC{
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    background-color: red;
+    border: 2px solid black;
+}
+
+#toggleKeyboard{
+    background-color: white;
+    height: 30px;
+}
+.input{
+    height: 30px;
+}
+.simple-keyboard{
+    visibility: visible;
+}
+@media (min-width:1150px){
+    .fieldsetB{
+        max-width: 70%;
+    }
+}
+
+@media (min-width:1400px){
+    .fieldsetB{
+        max-width: 50%;
+    }
+}
+
+@media (min-width:1600px) {
+    .fieldsetB{
+        max-width: 36%;
+    }
+}
+
