@@ -17,12 +17,10 @@ btns.forEach((btn, key) =>{
     info.textContent = `Dodajesz informacje do sektoru: ${symbol}`
   })
   btn.addEventListener("dblclick", (ev)=>{
-    if(ev.srcElement.id == "86") return
-    if(btn.classList == "btn btn-success"){
-      btn.classList = "btn btn-danger"
-    }else{
-      btn.classList = "btn btn-success"
-    }
+    let symbol = info.ariaLabel
+    if(btn.classList == "btn btn-success") updateState(info.ariaLabel, 0);
+    else updateState(info.ariaLabel, 1)
+
   })
 })
 
@@ -49,8 +47,25 @@ submit.addEventListener("click", ()=>{
   }}
 })
 
-
-async function updateHandler(){
+function updateState(aria, state){
+  try{
+    let symbol = aria.slice(0, 1);
+    let number = aria.slice(1, aria.length);
+    $.ajax({
+      headers: { "Accept": "application/json"},
+        type: "POST",
+        url: `https://elektrykunlocked.xyz/sectors`,
+        data: {"symbol": symbol, "number": number, "state": state},
+        crossDomain: true,
+        success: function(data, textStatus, request){
+            console.log(data)
+        }
+    })
+  }catch(e){
+    console.log("Wyjebalo errora :C", e)
+  }
+}
+function updateHandler(){
   $.ajax({
     headers: { "Accept": "application/json"},
       type: "GET",
@@ -67,11 +82,9 @@ async function updateHandler(){
         })
       }
   })
-  let data = await fetch("https://elektrykunlocked.xyz/sectorsAll");
-  console.log(data)
 }
 let updateHandlerInterval = setInterval(async () => {
-  await updateHandler()
+  updateHandler()
 }, 10000);
 updateHandler()
 
