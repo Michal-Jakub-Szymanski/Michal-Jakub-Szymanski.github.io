@@ -54,7 +54,7 @@ async function updateHandler(){
   $.ajax({
     headers: { "Accept": "application/json"},
       type: "GET",
-      url: `http://130.61.251.135:2137/sectorsAll`,
+      url: `https://elektrykunlocked.xyz/sectorsAll`,
       crossDomain: true,
       success: function(data, textStatus, request){
         data.forEach(el=>{
@@ -67,7 +67,7 @@ async function updateHandler(){
         })
       }
   })
-  let data = await fetch("http://130.61.251.135:2137/sectorsAll");
+  let data = await fetch("https://elektrykunlocked.xyz/sectorsAll");
   console.log(data)
 }
 let updateHandlerInterval = setInterval(async () => {
@@ -83,7 +83,7 @@ function updateComment(button, data){
     $.ajax({
       headers: { "Accept": "application/json"},
         type: "POST",
-        url: `http://130.61.251.135:2137/sectors`,
+        url: `https://elektrykunlocked.xyz/sectors`,
         data: {"symbol": symbol, "number": number, "commentData": data},
         crossDomain: true,
         success: function(data, textStatus, request){
@@ -102,7 +102,7 @@ function selectComment(button){
     $.ajax({
       headers: { "Accept": "application/json"},
       type: "GET",
-      url: `http://130.61.251.135:2137/sectors?symbol=${symbol}&number=${number}`,
+      url: `https://elektrykunlocked.xyz/sectors?symbol=${symbol}&number=${number}`,
       crossDomain: true,
       success: function(data, textStatus, request){
         comDiv.textContent = data.comment
