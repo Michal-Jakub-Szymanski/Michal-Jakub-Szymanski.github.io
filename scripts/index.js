@@ -67,6 +67,8 @@ async function updateHandler(){
         })
       }
   })
+  let data = await fetch("http://130.61.251.135:2137/sectorsAll");
+  console.log(data)
 }
 let updateHandlerInterval = setInterval(async () => {
   await updateHandler()
