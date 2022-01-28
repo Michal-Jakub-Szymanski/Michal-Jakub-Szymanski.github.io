@@ -58,7 +58,7 @@ function updateState(aria, state){
         data: {"symbol": symbol, "number": number, "state": state},
         crossDomain: true,
         success: function(data, textStatus, request){
-            console.log(data)
+            console.log(request)
         }
     })
   }catch(e){
