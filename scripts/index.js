@@ -18,8 +18,8 @@ btns.forEach((btn, key) =>{
   })
   btn.addEventListener("dblclick", (ev)=>{
     let symbol = info.ariaLabel
-    if(btn.classList == "btn btn-success") updateState(info.ariaLabel, 0);
-    else updateState(info.ariaLabel, 1)
+    if(btn.classList == "btn btn-success"){btn.classList = "btn btn-warning";updateState(info.ariaLabel, 0)};
+    else{btn.classList = "btn btn-success";updateState(info.ariaLabel, 1)}
 
   })
 })
