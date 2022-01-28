@@ -75,7 +75,7 @@ let updateHandlerInterval = setInterval(async () => {
 }, 10000);
 updateHandler()
 
-function updateComment(button, data){
+/*function updateComment(button, data){
   let aria = button;
   try{
     let symbol = aria.slice(0, 1);
@@ -109,4 +109,4 @@ function selectComment(button){
         console.log(data.comment)
       }
     })
-}
+}*/
