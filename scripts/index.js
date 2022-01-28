@@ -51,10 +51,10 @@ submit.addEventListener("click", ()=>{
 
 
 async function updateHandler(){
-  /*$.ajax({
+  $.ajax({
     headers: { "Accept": "application/json"},
       type: "GET",
-      url: `http://130.61.251.135:3000/sectorsAll`,
+      url: `http://130.61.251.135:2137/sectorsAll`,
       crossDomain: true,
       success: function(data, textStatus, request){
         data.forEach(el=>{
@@ -66,16 +66,14 @@ async function updateHandler(){
           }
         })
       }
-  })*/
-  let data = await fetch("http://130.61.251.135:3000/sectorsAll")
-  console.log(data)
+  })
 }
 let updateHandlerInterval = setInterval(async () => {
   await updateHandler()
 }, 10000);
 updateHandler()
 
-/*function updateComment(button, data){
+function updateComment(button, data){
   let aria = button;
   try{
     let symbol = aria.slice(0, 1);
@@ -83,7 +81,7 @@ updateHandler()
     $.ajax({
       headers: { "Accept": "application/json"},
         type: "POST",
-        url: `http://130.61.251.135:3000/sectors`,
+        url: `http://130.61.251.135:2137/sectors`,
         data: {"symbol": symbol, "number": number, "commentData": data},
         crossDomain: true,
         success: function(data, textStatus, request){
@@ -102,11 +100,11 @@ function selectComment(button){
     $.ajax({
       headers: { "Accept": "application/json"},
       type: "GET",
-      url: `http://130.61.251.135:3000/sectors?symbol=${symbol}&number=${number}`,
+      url: `http://130.61.251.135:2137/sectors?symbol=${symbol}&number=${number}`,
       crossDomain: true,
       success: function(data, textStatus, request){
         comDiv.textContent = data.comment
         console.log(data.comment)
       }
     })
-}*/
+}
