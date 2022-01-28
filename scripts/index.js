@@ -50,8 +50,8 @@ submit.addEventListener("click", ()=>{
 })
 
 
-function updateHandler(){
-  $.ajax({
+async function updateHandler(){
+  /*$.ajax({
     headers: { "Accept": "application/json"},
       type: "GET",
       url: `http://130.61.251.135:3000/sectorsAll`,
@@ -66,10 +66,12 @@ function updateHandler(){
           }
         })
       }
-  })
+  })*/
+  let data = await fetch("http://130.61.251.135:3000/sectorsAll")
+  console.log(data)
 }
-let updateHandlerInterval = setInterval(() => {
-  updateHandler()
+let updateHandlerInterval = setInterval(async () => {
+  await updateHandler()
 }, 10000);
 updateHandler()
 
