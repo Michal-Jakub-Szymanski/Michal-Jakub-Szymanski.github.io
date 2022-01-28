@@ -54,7 +54,7 @@ function updateHandler(){
   $.ajax({
     headers: { "Accept": "application/json"},
       type: "GET",
-      url: `//130.61.251.135:3000/sectorsAll`,
+      url: `http://130.61.251.135:3000/sectorsAll`,
       crossDomain: true,
       success: function(data, textStatus, request){
         data.forEach(el=>{
@@ -81,7 +81,7 @@ function updateComment(button, data){
     $.ajax({
       headers: { "Accept": "application/json"},
         type: "POST",
-        url: `//130.61.251.135:3000/sectors`,
+        url: `http://130.61.251.135:3000/sectors`,
         data: {"symbol": symbol, "number": number, "commentData": data},
         crossDomain: true,
         success: function(data, textStatus, request){
@@ -100,7 +100,7 @@ function selectComment(button){
     $.ajax({
       headers: { "Accept": "application/json"},
       type: "GET",
-      url: `//130.61.251.135:3000/sectors?symbol=${symbol}&number=${number}`,
+      url: `http://130.61.251.135:3000/sectors?symbol=${symbol}&number=${number}`,
       crossDomain: true,
       success: function(data, textStatus, request){
         comDiv.textContent = data.comment
