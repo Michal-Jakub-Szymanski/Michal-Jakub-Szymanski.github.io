@@ -60,6 +60,7 @@ submit.addEventListener("click", ()=>{
     errorDiv.classList = "text-success"
     document.querySelector(`button[aria-label="${info.ariaLabel}"]`).textContent = `${info.ariaLabel.slice(1, info.ariaLabel.length)}!`
     comDiv.textContent = val
+    input.value = ""
     updateComment(info.ariaLabel, val)
   }}
 })
