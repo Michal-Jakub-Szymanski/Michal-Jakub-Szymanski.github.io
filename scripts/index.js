@@ -17,14 +17,31 @@ btns.forEach((btn, key) =>{
     info.textContent = `Dodajesz informacje do sektoru: ${symbol}`
   })
   btn.addEventListener("dblclick", (ev)=>{
-    let symbol = info.ariaLabel
-    if(btn.classList == "btn btn-success"){btn.classList = "btn btn-danger";updateState(info.ariaLabel, 0)}
-    else{btn.classList = "btn btn-success";updateState(info.ariaLabel, 1)}
-
+    if(ev.srcElement.id == "86") return
+    if(btn.classList == "btn btn-success"){
+      btn.classList = "btn btn-danger"
+      updateState(0, btn.ariaLabel)
+    }else{
+      btn.classList = "btn btn-success"
+      updateState(1, btn.ariaLabel)
+    }
   })
 })
 
-
+function updateState(state, aria){
+  let symbol = aria.slice(0, 1);
+  let number = aria.slice(1, aria.length); 
+  $.ajax({
+    headers: { "Accept": "application/json"},
+      type: "POST",
+      url: `http://elektrykunlocked.xyz/sectorState`,
+      data: {"symbol": symbol, "number": number, "state": state},
+      crossDomain: true,
+      success: function(data, textStatus, request){
+          console.log(request)
+      }
+  })
+}
 
 submit.addEventListener("click", ()=>{
   let val = input.value
@@ -47,29 +64,12 @@ submit.addEventListener("click", ()=>{
   }}
 })
 
-function updateState(aria, state){
-  try{
-    let symbol = aria.slice(0, 1);
-    let number = aria.slice(1, aria.length);
-    $.ajax({
-      headers: { "Accept": "application/json"},
-        type: "POST",
-        url: `https://elektrykunlocked.xyz/sectors`,
-        data: {"symbol": symbol, "number": number, "state": state},
-        crossDomain: true,
-        success: function(data, textStatus, request){
-            console.log(data, textStatus, request)
-        }
-    })
-  }catch(e){
-    console.log("Wyjebalo errora :C", e)
-  }
-}
+
 function updateHandler(){
   $.ajax({
     headers: { "Accept": "application/json"},
       type: "GET",
-      url: `https://elektrykunlocked.xyz/sectorsAll`,
+      url: `http://elektrykunlocked.xyz/sectorsAll`,
       crossDomain: true,
       success: function(data, textStatus, request){
         data.forEach(el=>{
@@ -79,11 +79,16 @@ function updateHandler(){
           }else{
             document.querySelector(`[aria-label=${combine}]`).textContent = `${el.number}!`
           }
+          if(el.state == 1){
+            document.querySelector(`[aria-label=${combine}]`).classList = `btn btn-success`
+          }else{
+            document.querySelector(`[aria-label=${combine}]`).classList = `btn btn-danger`
+          }
         })
       }
   })
 }
-let updateHandlerInterval = setInterval(async () => {
+let updateHandlerInterval = setInterval(() => {
   updateHandler()
 }, 10000);
 updateHandler()
@@ -96,7 +101,7 @@ function updateComment(button, data){
     $.ajax({
       headers: { "Accept": "application/json"},
         type: "POST",
-        url: `https://elektrykunlocked.xyz/sectors`,
+        url: `http://elektrykunlocked.xyz/sectors`,
         data: {"symbol": symbol, "number": number, "commentData": data},
         crossDomain: true,
         success: function(data, textStatus, request){
@@ -115,7 +120,7 @@ function selectComment(button){
     $.ajax({
       headers: { "Accept": "application/json"},
       type: "GET",
-      url: `https://elektrykunlocked.xyz/sectors?symbol=${symbol}&number=${number}`,
+      url: `http://elektrykunlocked.xyz/sectors?symbol=${symbol}&number=${number}`,
       crossDomain: true,
       success: function(data, textStatus, request){
         comDiv.textContent = data.comment
