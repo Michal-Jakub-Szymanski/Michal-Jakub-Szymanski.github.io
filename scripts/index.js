@@ -34,7 +34,7 @@ function updateState(state, aria){
   $.ajax({
     headers: { "Accept": "application/json"},
       type: "POST",
-      url: `http://elektrykunlocked.xyz/sectorState`,
+      url: `https://elektrykunlocked.xyz/sectorState`,
       data: {"symbol": symbol, "number": number, "state": state},
       crossDomain: true,
       success: function(data, textStatus, request){
@@ -69,7 +69,7 @@ function updateHandler(){
   $.ajax({
     headers: { "Accept": "application/json"},
       type: "GET",
-      url: `http://elektrykunlocked.xyz/sectorsAll`,
+      url: `https://elektrykunlocked.xyz/sectorsAll`,
       crossDomain: true,
       success: function(data, textStatus, request){
         data.forEach(el=>{
@@ -101,7 +101,7 @@ function updateComment(button, data){
     $.ajax({
       headers: { "Accept": "application/json"},
         type: "POST",
-        url: `http://elektrykunlocked.xyz/sectors`,
+        url: `https://elektrykunlocked.xyz/sectors`,
         data: {"symbol": symbol, "number": number, "commentData": data},
         crossDomain: true,
         success: function(data, textStatus, request){
@@ -120,7 +120,7 @@ function selectComment(button){
     $.ajax({
       headers: { "Accept": "application/json"},
       type: "GET",
-      url: `http://elektrykunlocked.xyz/sectors?symbol=${symbol}&number=${number}`,
+      url: `https://elektrykunlocked.xyz/sectors?symbol=${symbol}&number=${number}`,
       crossDomain: true,
       success: function(data, textStatus, request){
         comDiv.textContent = data.comment
