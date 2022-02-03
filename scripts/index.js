@@ -77,9 +77,9 @@ function updateHandler(){
         data.forEach(el=>{
           let combine = `${el.symbol}${el.number}`
           if(el.comment == ""){
-          document.querySelector(`[aria-label=${combine}]`).textContent = `${el.number}`
+          document.querySelector(`[aria-label=${combine}]`).style.color = `white`
           }else{
-            document.querySelector(`[aria-label=${combine}]`).textContent = `${el.number}!`
+            document.querySelector(`[aria-label=${combine}]`).style.color = `blue`
           }
           if(el.state == 1){
             document.querySelector(`[aria-label=${combine}]`).classList = `btn btn-success`
