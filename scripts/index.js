@@ -58,7 +58,7 @@ submit.addEventListener("click", ()=>{
   }else{
     errorDiv.textContent = "Pomyslnie dodano komentarz"
     errorDiv.classList = "text-success"
-    document.querySelector(`button[aria-label="${info.ariaLabel}"]`).style.color = `blue`
+    document.querySelector(`button[aria-label="${info.ariaLabel}"]`).style.color = `#32F745`
     comDiv.textContent = val
     console.log(input.value)
     input.value = ""
@@ -79,7 +79,7 @@ function updateHandler(){
           if(el.comment == ""){
           document.querySelector(`[aria-label=${combine}]`).style.color = `white`
           }else{
-            document.querySelector(`[aria-label=${combine}]`).style.color = `blue`
+            document.querySelector(`[aria-label=${combine}]`).style.color = `#32F745`
           }
           if(el.state == 1){
             document.querySelector(`[aria-label=${combine}]`).classList = `btn btn-success`
