@@ -52,13 +52,13 @@ submit.addEventListener("click", ()=>{
   if(val == ""){
     errorDiv.textContent = "Pomyslnie usunieto komenatrz";
     errorDiv.classList = "text-success"
-    document.querySelector(`button[aria-label="${info.ariaLabel}"]`).textContent = `${info.ariaLabel.slice(1, info.ariaLabel.length)}`
+    document.querySelector(`button[aria-label="${info.ariaLabel}"]`).style.color = `white`
     comDiv.textContent = val
     updateComment(info.ariaLabel, val)
   }else{
     errorDiv.textContent = "Pomyslnie dodano komentarz"
     errorDiv.classList = "text-success"
-    document.querySelector(`button[aria-label="${info.ariaLabel}"]`).textContent = `${info.ariaLabel.slice(1, info.ariaLabel.length)}!`
+    document.querySelector(`button[aria-label="${info.ariaLabel}"]`).style.color = `blue`
     comDiv.textContent = val
     console.log(input.value)
     input.value = ""
