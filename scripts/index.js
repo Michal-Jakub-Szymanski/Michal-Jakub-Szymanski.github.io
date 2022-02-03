@@ -90,7 +90,7 @@ function updateHandler(){
 }
 let updateHandlerInterval = setInterval(() => {
   updateHandler()
-}, 10000);
+}, 5000);
 updateHandler()
 
 function updateComment(button, data){
