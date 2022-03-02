@@ -64,7 +64,8 @@ app.get("/AmazonScrape", async (req, res)=>{
         const $ = cheerio.load(data);
         res.send({
             price: $(".a-section.a-spacing-micro").text().split("zł")[0].replace(/\s/g, ''),
-            name: $("#productTitle").text()
+            name: `${$("#productTitle").text()}PLN`,
+            time: `${new Date().getHours()}:${new Date().getMinutes()}`
         })
     });
 
