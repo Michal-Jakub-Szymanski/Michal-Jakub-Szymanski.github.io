@@ -51,6 +51,8 @@ button{
 .simple-keyboard{
     visibility: visible;
 }
+
+
 @media (min-width:1150px){
     .fieldsetB{
         max-width: 70%;
